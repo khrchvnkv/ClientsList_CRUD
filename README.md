@@ -1,1 +1,3 @@
-# ClientsList_CRUD
+# ClientsList CRUD
+
+Application with CRUD functionality
