@@ -1,0 +1,65 @@
+@page
+@model ClientsList.Pages.Clients.Edit
+
+<br/>
+<h2>Edit Client</h2>
+
+@if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>@Model.ErrorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form method="post">
+    <input type="hidden" name="@nameof(Model.ClientModel.Id)" value="@Model.ClientModel.Id"/>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="@nameof(Model.ClientModel.Name)" value="@Model.ClientModel.Name"/>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="@nameof(Model.ClientModel.Email)" value="@Model.ClientModel.Email"/>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Phone</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="@nameof(Model.ClientModel.Phone)" value="@Model.ClientModel.Phone"/>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Address</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="@nameof(Model.ClientModel.Address)" value="@Model.ClientModel.Address"/>
+        </div>
+    </div>
+
+    @if (Model.SuccessMessage != null)
+    {
+        <div class="row mb-3">
+            <div class=" col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.SuccessMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+</form>

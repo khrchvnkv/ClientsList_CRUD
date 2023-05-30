@@ -1,0 +1,27 @@
+@page
+@using System.Data.SqlClient
+@using ClientsList.Helpers
+@model ClientsList.Pages.Clients.Delete
+
+@{
+    try
+    {
+        var stringId = Request.Query["id"].ToString();
+        var id = Int32.Parse(stringId);
+        using (SqlConnection sqlConnection = new SqlConnection(DbHelper.ConnectionString))
+        {
+            sqlConnection.Open();
+            var sqlQuery = "DElETE FROM Clients WHERE Id=@id";
+            using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+            {
+                sqlCommand.Parameters.AddWithValue("@id", id);
+                sqlCommand.ExecuteNonQuery();
+            }
+        }
+    }
+    catch (Exception e)
+    {
+
+    }
+    Response.Redirect("/Clients/Index");
+}
